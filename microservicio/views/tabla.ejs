@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Productos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Datos de la Tabla</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre del Producto</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Fecha</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <% productos.forEach(function(producto) { %>
+                <tr>
+                    <td><%= producto.nombre_producto %></td>
+                    <td><%= producto.descripcion %></td>
+                    <td>$<%= producto.precio %></td>
+                    <td><%= producto.fecha %></td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

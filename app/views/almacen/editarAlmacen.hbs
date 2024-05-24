@@ -1,0 +1,15 @@
+<div class="container">
+    <h1 class="text-center text-3xl font-bold">Editar en Inventario</h1>
+    {{#each almacen}}
+    <form action="" method="POST" style="flex: 1; margin-right: 20px;">
+        <h2>Nombre del producto</h2>
+        <input class="form-control" type="text" name="nombre_almacen" value="{{nombre_almacen}}"/>
+        <h2>Cantidad en existencias</h2>
+        <input class="form-control" type="number" name="cant_existencia" value="{{cant_existencia}}">
+        <br>
+        <center>
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        </center>
+    </form>
+    {{/each}}
+</div>

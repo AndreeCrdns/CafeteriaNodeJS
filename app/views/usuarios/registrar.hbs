@@ -1,0 +1,31 @@
+<div class="container">
+    <h2>Registro</h2>
+
+    <form action="" method="post" >
+
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Usuario" name="username">
+            <label for="floatingInput">Usuario</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña"
+                name="password">
+            <label for="floatingPassword">Contraseña</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <select class="form-select" name="t_usuario">
+                <option value="administrador">Administrador</option>
+                <option value="empleado">Empleado</option>
+                <option value="cliente">Cliente</option>
+            </select>
+            <label for="floatingSelect">Rol</label>
+        </div>
+
+        <br>
+        <center>
+        <button class="btn btn-lg" style="background-color: orange;color: white;" type="submit">Registro</button>
+        </center>
+    </form>
+</div>

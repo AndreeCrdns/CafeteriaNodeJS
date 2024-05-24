@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        .btn-orange-hover:hover {
+            background-color: orange;
+            color: white;
+        }
+
+        .btn-red-hover:hover {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h2>Menú</h2>
+    </center>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+            {{#each productos}}
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src='{{imagen}}' class="bd-placeholder-img card-img-top" width="100%" height="225">
+                    <div class="card-body">
+                        <p class="card-text">{{nombre_producto}} <br>{{descripcion}}<br>${{precio}}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="/editar/{{id_producto}}"><button type="button"
+                                        class="btn btn-sm btn-outline-secondary btn-orange-hover">Editar</button></a>
+                                <form action="/eliminar" method="POST" class="mx-2">
+                                    <input type="hidden" value="{{id_producto}}" name="id">
+                                    <button class="btn btn-sm btn-outline-secondary btn-red-hover" type="submit">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <a href="/agregar_pedido/{{id_producto}}"><button type="button"
+                                    class="btn btn-sm btn-outline-secondary btn-orange-hover">Agregar</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <center>
+            <a href="/agregar" class="nav-link"><button type="button" class="btn btn-lg" style="background-color: orange; 
+      color: white;">Agregar producto</button></a>
+        </center>
+    </div>
+</body>
+
+</html>

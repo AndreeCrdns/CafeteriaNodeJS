@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+
+        img {
+            width: 50px;
+            border-radius: 50%;
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            color: #333;
+        }
+
+        .btn-orange-hover:hover {
+            background-color: orange;
+            color: white;
+        }
+
+        .btn-red-hover:hover {
+            background-color: red;
+            color: white;
+        }
+
+        /* Estilos del botón de cerrar */
+    </style>
+    <script>
+    
+        function calcularTotal() {
+            var precios = document.getElementsByClassName('precio');
+            var preciosArray = [];
+            for (var i = 0; i < precios.length; i++) {
+                preciosArray.push(parseFloat(precios[i].textContent));
+            }
+            var total = preciosArray.reduce(function (a, b) {
+                return a + b;
+            }, 0);
+            document.getElementById("totalPrecio").value = total.toFixed(2);
+            return total;
+        }
+       
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id Producto</th>
+                    <th></th>
+                    <th>Nombre del Producto</th>
+                    <th>Tipo de Leche</th>
+                    <th>Shot</th>
+                    <th>Precio</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each detalles_pedido}}
+                <tr>
+                    <td>{{id_producto}}</td>
+                    <td><img src="{{imagen}}" alt="{{nombre_producto}}"></td>
+                    <td>{{nombre_producto}}</td>
+                    <td>{{t_leche}}</td>
+                    <td>{{shot}}</td>
+                    <td class="precio">{{precio}}</td>
+                    <td>
+                        <form action="/eliminarPedido" method="POST" class="mx-2">
+                            <input type="hidden" value="{{id_detalles}}" name="id">
+                            <button class="btn btn-sm btn-outline-secondary btn-red-hover" type="submit">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <h2>Precio Total:</h2>
+        <input id="totalPrecio" value="" readonly>
+        <br>
+        <br>
+        <form method="post" action="/finalizar_compra">
+            <button class="btn btn-lg" style="background-color: orange;color: white;" type="submit">Finalizar
+                Compra</button>
+        </form>
+    </div>
+
+
+</body>
+
+</html>

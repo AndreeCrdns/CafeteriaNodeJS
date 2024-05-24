@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado de la busqueda</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <center>
+        <h1>Resultado de la Búsqueda</h1>
+    </center>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+            <% if (producto) { %>
+                <div class="col">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <%= producto.nombre_producto %> <br>
+                                <%= producto.descripcion %><br>$<%= producto.precio %>
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="http://localhost:1000/agregar_tabla/<%= producto.id_producto %>"><button type="button"
+                                    class="btn btn-sm btn-outline-secondary btn-orange-hover">Agregar</button></a>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

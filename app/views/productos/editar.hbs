@@ -1,0 +1,18 @@
+<div class="container">
+    <h1 class="text-center text-3xl font-bold">Editar Producto</h1>
+    {{#each productos}}
+    <form action="" method="POST" style="flex: 1; margin-right: 20px;">
+        <h2>Nombre del producto</h2>
+        <input class="form-control" type="text" name="nombre_producto" value="{{nombre_producto}}" />
+        <h2>Descripción</h2>
+        <input class="form-control" type="text" name="descripcion" value="{{descripcion}}" />
+        <h2>Precio</h2>
+        <input class="form-control" type="number" name="precio" value="{{precio}}" />
+        <br>
+        <center>
+            <button type="submit" class="btn btn-lg" style="background-color: orange; 
+      color: white;">Guardar Cambios</button>
+        </center>
+    </form>
+    {{/each}}
+</div>

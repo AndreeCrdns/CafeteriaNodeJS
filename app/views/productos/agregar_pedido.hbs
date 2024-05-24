@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="block mx-auto my-12 p-8 bg-white w-1/3 border border-gray-200 rounded-lg shadow-lg text-gray-800">
+
+        <h1 class="text-center text-3xl font-bold">Agregar pedido</h1>
+        {{#each productos}}
+        <form action="" method="POST" style="flex: 1; margin-right: 20px;">
+            <h2>Numero producto</h2>
+            <input class="form-control" type="text" name="id_producto" value="{{id_producto}}" readonly />
+            <h2>Nombre producto</h2>
+            <input class="form-control" type="text" name="" value="{{nombre_producto}}" readonly />
+            <h2>Tipo de leche</h2>
+            <select class="form-control" type="text" name="t_leche" value="" style="resize:none;">
+                <option value="NA">No aplica</option>
+                <option value="Entera">Entera</option>
+                <option value="deslactozada">deslactozada</option>
+            </select>
+            <h2>Tipo de shot</h2>
+            <select class="form-control" type="number" name="shot" value="" />
+            <option value="NA">No aplica</option>
+            <option value="Expresso">Expresso</option>
+            <option value="Vainilla">Vainilla</option>
+            </select>
+            <br>
+            <center>
+                <button type="submit" class="btn btn-lg">Guardar Cambios</button>
+            </center>
+        </form>
+        {{/each}}
+    </div>
+</div>

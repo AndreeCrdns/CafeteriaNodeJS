@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  mysqldb:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=cafeteria
+    ports:
+      - 3307:3306
+
+  nodejs:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: cafeteriadocker
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/cafeteriadocker

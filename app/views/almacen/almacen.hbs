@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almacen</title>
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        .btn-orange-hover:hover {
+            background-color: orange;
+            color: white;
+        }
+
+        .btn-red-hover:hover {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>N. producto</th>
+                    <th>Nombre</th>
+                    <th>Cantidad en existencias</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each almacen}}
+                <tr>
+                    <td>{{id_almacen}}</td>
+                    <td>{{nombre_almacen}}</td>
+                    <td>{{cant_existencia}}</td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="/editarAlmacen/{{id_almacen}}"><button type="button"
+                                    class="btn btn-sm btn-outline-secondary btn-orange-hover">Editar</button></a>
+                            <form action="/eliminarAlmacen" method="POST" class="mx-2">
+                                <input type="hidden" value="{{id_almacen}}" name="id">
+                                <button class="btn btn-sm btn-outline-secondary btn-red-hover" type="submit">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <br>
+        <center>
+            <a href="/agregarAlmacen"><button type="submit" class="btn btn-lg" style="background-color: orange;color: white;">Agregar</button></a>
+        </center>
+    </div>
+</body>
+
+</html>

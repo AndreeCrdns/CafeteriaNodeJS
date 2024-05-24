@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<wsdl:definitions name="productos"
+             targetNamespace="http://example.com/productos.wsdl"
+             xmlns:tns="http://example.com/productos.wsdl"
+             xmlns:xsd1="http://example.com/productos.xsd"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+    <wsdl:types>
+       <xsd:schema targetNamespace="http://example.com/productos.xsd" xmlns:xsd="http://www.w3.org/2000/10/XMLSchema">
+           <xsd:element name="ProductosRequest">
+              <xsd:complexType>
+                  <xsd:all>
+                      <xsd:element name="tickerSymbol" type="string"/>
+                  </xsd:all>
+              </xsd:complexType>
+           </xsd:element>
+           <xsd:element name="Productos">
+              <xsd:complexType>
+                  <xsd:all>
+                      <xsd:element name="id_producto" type="int"/>
+                      <xsd:element name="nombre_producto" type="string"/>
+                      <xsd:element name="precio" type="float"/>
+                      <xsd:element name="descripcion" type="string"/>
+                      <xsd:element name="imagen" type="string"/>
+                  </xsd:all>
+              </xsd:complexType>
+           </xsd:element>
+       </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="GetProductosInput">
+        <wsdl:part name="body" element="xsd1:ProductosRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetProductosOutput">
+        <wsdl:part name="body" element="xsd1:Productos"/>
+    </wsdl:message>
+
+    <wsdl:portType name="ProductosPortType">
+        <wsdl:operation name="GetProductos">
+           <wsdl:input message="tns:GetProductosInput"/>
+           <wsdl:output message="tns:GetProductosOutput"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="ProductosSoapBinding" type="tns:ProductosPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetProductosPrice">
+           <soap:operation soapAction="http://example.com/GetProductosPrice"/>
+           <wsdl:input>
+               <soap:body use="literal"/>
+           </wsdl:input>
+           <wsdl:output>
+               <soap:body use="literal"/>
+           </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="ProductosService">
+        <wsdl:port name="ProductosPort" binding="tns:ProductosSoapBinding">
+           <soap:address location="http://localhost:15099/productos"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
